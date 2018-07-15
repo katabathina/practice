@@ -1,0 +1,56 @@
+<virtualHost *:80>
+        ServerName www.shoppingcart.test.com
+        RedirectMatch  ^/$ /shoppingcart/
+
+        ProxyRequests off
+        ProxyPreserveHost on
+        ProxyPass /shoppingcart  balancer://shr stickysession=JSESSIONID
+        ProxyPassReverse /shoppingcart balancer://shr stickysession=JSESSIONID
+
+        <Proxy balancer://shr>
+                BalancerMember http://ec2-34-216-38-215.us-west-2.compute.amazonaws.com:8080/shoppingcart
+                BalancerMember http://ec2-34-216-38-215.us-west-2.compute.amazonaws.com:8180/shoppingcart
+
+        </Proxy>
+
+        <Location /balancer-manager>
+
+                SetHandler balancer-manager
+
+        </Location>
+
+
+
+</virtualHost>
+
+
+
+http://52.37.39.147/balancer-manager
+
+
+
+<virtualHost *:80>
+        ServerName www.shoppingcart.test.com
+        RedirectMatch  ^/$ /shoppingcart/
+
+        ProxyRequests off
+        ProxyPreserveHost on
+        ProxyPass /shoppingcart  balancer://shr stickysession=JSESSIONID
+        ProxyPassReverse /shoppingcart balancer://shr stickysession=JSESSIONID
+
+        <Proxy balancer://shr>
+                BalancerMember http://ec2-34-216-98-125.us-west-2.compute.amazonaws.com:8080/shoppingcart
+                BalancerMember http://ec2-34-216-98-125.us-west-2.compute.amazonaws.com:8180/shoppingcart
+
+        </Proxy>
+
+        <Location /balancer-manager>
+
+
+                SetHandler balancer-manager
+
+        </Location>
+
+
+
+</virtualHost>

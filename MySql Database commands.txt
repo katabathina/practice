@@ -1,0 +1,200 @@
+To conncet MySQL database from Linux Ec2-->
+
+ex:-
+mysql -h <rds endpoint> -u <username> -p
+
+mysql -h lampdb1.chujqb6qqfc5.ca-central-1.rds.amazonaws.com -u admin -p
+password:admin123
+
+=============================================
+To check how many databases in RDS (mysql):
+
+Ex:- mysql:- show databases;
+
+=============================================
+
+Use Database command:-
+
+Ex:-
+use <database name>
+use <sreedhardev>
+
+=============================================
+
+Create database;-
+
+Ex:- Create database <database name>;
+
+create database sreedhardev;
+===============================
+create a user and password for DB:-
+
+Ex:-- CREATE USER <username>@<IP> IDENTIFIED BY "<user password>";
+
+CREATE USER sreedhardev@35.182.44.171 IDENTIFIED BY "sreedharapp123";
+
+======================================
+Givig Privileges to database to specific user:-
+
+Ex:-
+GRANT ALL ON sreedhardev.* TO sreedhardev@35.182.44.171;
+GRANT ALL ON <database name>.* TO <user name>@<IP>;
+
+next execute below command then only previliges applicable.
+
+FLUSH PRIVILEGES;
+
+=========================================
+
+Create a table in DB:-
+
+Ex:-
+create table employee (Name char(20),Dept char(20),jobTitle char(20));
+
+=========================================
+View table:-
+
+Ex:-
+
+mysql> DESCRIBE employee;
+
+======================================
+
+Insert values into specific table;
+
+Ex:-
+mysql> INSERT INTO employee VALUES ('Fred Flinstone','Quarry Worker','Rock Digger');
+
+======================================
+
+
+
+
+
+To backup a MySQL database we need to know a name of the specific database we would liken to backup. 
+Let's assume that we are going to backup a database named mysql-data.
+Creating a Backup-mysql.
+
+
+$ mysqldump -u root -p mysql-data  mysql-data-backup.sql
+$ mysql -u root -p mysql-data < mysql-data-backup.sql
+
+mysqldump database_name > database_name.sql
+============================================================
+
+Multiple databases can be backed up at the same time:
+
+mysqldump --databases database_one database_two > two_databases.sql
+=============================================================
+
+It is also simple to back up all of the databases on a server:
+
+mysqldump --all-databases > all_databases.sql
+=====================================================
+
+Restoring a Bakcup:-
+
+Since the dump files are just SQL commands, you can restore the database backup by 
+telling mysql to run the commands in it and put the data into the proper database.
+
+mysql database_name < database_name.sql
+-------------------------------------------
+
+In the code above, database_name is the name of the database you want to restore, and database_name.
+sql is the name of the backup file to be restored..
+If you are trying to restore a single database from dump of all the databases, you have to let mysql know like this:--->>
+
+mysql --one-database database_name < all_databases.sql
+=========================================================================
+
+How to Backup MySQL Database?
+
+To take a backup of MySQL database or databases, the database must exist in the database server and you must have access to it. The format of the command would be.
+
+# mysqldump -u [username] –p[password] [database_name] > [dump_file.sql]
+
+The parameters of the said command as follows.
+
+[username] : A valid MySQL username.
+[password] : A valid MySQL password for the user.
+[database_name] : A valid Database name you want to take backup.
+[dump_file.sql] : The name of backup dump file you want to generate.
+
+===============================================================================
+
+How to Backup a Single MySQL Database?
+
+To take a backup of single database, use the command as follows. The command will dump database [rsyslog] structure with data on to a single dump file called rsyslog.sql.
+
+# mysqldump -u root -ptecmint rsyslog > rsyslog.sql
+
+=======================================================
+
+How to Backup Multiple MySQL Databases?
+
+If you want to take backup of multiple databases, run the following command. The following example command takes a backup of databases [rsyslog, syslog] structure and data in to a single file called rsyslog_syslog.sql.
+
+# mysqldump -u root -ptecmint --databases rsyslog syslog > rsyslog_syslog.sql
+
+=========================================================
+
+
+How to Backup All MySQL Databases?
+
+If you want to take backup of all databases, then use the following command with option –all-database. The following command takes the backup of all databases with their structure and data into a file called all-databases.sql.
+
+# mysqldump -u root -ptecmint --all-databases > all-databases.sql
+
+==========================================================
+
+How to Backup MySQL Database Data Only?
+
+To backup database Data only without structure, then use the option –no-create-info with the command. This command takes the database [rsyslog] Data  into a file rsyslog_data.sql.
+
+# mysqldump -u root -ptecmint --no-create-db --no-create-info rsyslog > rsyslog_data.sql
+
+===========================================================
+
+
+How to Backup Single Table of Database?
+
+With the below command you can take backup of single table or certain tables of your database. For example, the following command only take backup of wp_posts table from the database wordpress.
+
+# mysqldump -u root -ptecmint wordpress wp_posts > wordpress_posts.sql
+
+==========================================================
+How to Backup Multiple Tables of Database?
+
+If you want to take backup of multiple or certain tables from the database, then separate each table with space.
+
+# mysqldump -u root -ptecmint wordpress wp_posts wp_comments > wordpress_posts_comments.sql
+
+========================================================
+
+How to Backup Remote MySQL Database
+
+The below command takes the backup of remote server [172.16.25.126] database [gallery] into a local server.
+
+# mysqldump -h 172.16.25.126 -u root -ptecmint gallery > gallery.sql
+
+========================================================
+How to Restore MySQL Database?
+In the above tutorial we have seen the how to take the backup of databases, tables, structures and data only, now we will see how to restore them using following format.
+
+# # mysql -u [username] –p[password] [database_name] < [dump_file.sql]
+
+=========================================================
+
+How to Restore Single MySQL Database
+
+To restore a database, you must create an empty database on the target machine and restore the database using msyql command. For example the following command will restore the rsyslog.sql file to the rsyslog database.
+
+# mysql -u root -ptecmint rsyslog < rsyslog.sql
+
+=======================================================
+If you want to restore a database that already exist on targeted machine, then you will need to use the mysqlimport command.
+
+# mysqlimport -u root -ptecmint rsyslog < rsyslog.sql
+
+
+In the same way you can also restore database tables, structures and data. If you liked this article, then do share it with your friends.

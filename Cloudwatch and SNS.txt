@@ -1,0 +1,117 @@
+CloudWatch---->Monitoring
+SNS----->Simple Notification Service.
+
+-=========================
+
+CloudWatch Monitoring-->
+
+--> If you want to monitor ec2 health check (CPU Utilization)
+
+1. first launch ec2 instance--
+
+2. select ec2 instance and enable deatailed monior.
+
+two ways to enabel ---(1) select server and goto actions select cloudwatch monitoring
+
+and enable detailed monitoring.
+
+ (11). first select server and goto down select monitoring section and 
+
+CloudWatch metrics:  Basic monitoring. Enable Detailed Monitoring
+
+select detailed monitoring.
+
+SNS:-
+
+3>>>>>Select SNS(Simple Notification Service)
+
+it will show SNS dashboard
+ 
+here topics and subscriptions are there.
+
+ -->first create a topic: 
+
+  ex: topic name::CPU Test
+
+  Display name: CPU Test
+ 
+
+ 
+ --> in "topics"  here it will show CPU Test :arn:aws:sns:us-east-2:041781599837:cputest
+
+ select and click the arn link " CPU Test :arn:aws:sns:us-east-2:041781599837:cputest" 
+  here it will choose "create subscrption".
+  
+ here it will show like three columns like:
+
+   topic ARN:arn:aws:sns:us-east-2:041781599837:cputest
+  
+  protocal:email,http/https,email-json, email sqs,aws lamda.-->choose email
+
+  endpoint:sreedhar.katabathina@gmail.com
+
+
+next login to mail click "confirm subscription"
+
+
+4>>> Goto  Cloudwatch Dashboard
+
+select alaram and create alaram
+
+select ec2--> per instance metrics
+
+ here choose "cpuutilization" goto next column "define alaram"
+
+ fill few deatils like name:cputest
+
+                description: cputest
+
+       whenever cpuutilization
+         
+          is >= 7
+
+   whenever this alaram: state is ALARAM
+
+    send notifications to: CPU Test.
+
+perion:1 minite.
+ 
+select ok..
+
+
+
+---> select server click create alaram .
+
+    select few deatils about mail
+    
+fianlly create ok.
+
+5>>> login to server increase cpu load -->
+
+-->  how to increase cpu load in linux
+ 
+ dd if=/dev/zero of=/dev/null
+
+  run the above line in script
+ 
+
+vi load.sh
+
+dd if=/dev/zero of=/dev/null
+wq!
+
+chmod 755 load.sh
+
+torun script in the background-->
+ nohup sh load.sh &
+
+if increase the load mail will trigger to mailid
+
+====================================================
+
+
+
+
+
+ 
+

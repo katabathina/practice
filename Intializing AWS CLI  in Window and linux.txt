@@ -1,0 +1,92 @@
+1 .AwS CLI initializaton in windows?
+==========================================
+--->first install the AWS CLI from browser to local system (windows).
+
+https://docs.aws.amazon.com/cli/latest/userguide/awscli-install-windows.html
+
+Download the AWS CLI MSI installer for Windows (64-bit).
+
+install in window like next next like that.
+
+
+---> next open cmd prompt from run.
+
+ --> aws configuration
+
+ -->AWS Access Key ID [****************MRLA]: AKIAIYSQNSIU2FUXPW6Q
+ 
+ -->AWS Secret Access Key [****************ls6Q]: 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
+
+ -->Default region name [ap-south-1]: us-east-2  (specify the region)
+
+ -->Default region name [ap-south-1]: us-east-2
+
+ -->aws --version  (to know the version)
+
+So AWS CLI is ready in Windows.
+
+===========================================
+
+2. AwS CLI installed in Linux?
+
+=========================================
+
+prequisites for AWS CLI installation in Linux:-
+
+Pythion
+
+aws cli installing through pip
+
+--->To Install PIP
+
+  --->curl -O https://bootstrap.pypa.io/get-pip.py
+
+  --->python get-pip.py --user
+
+  --->export PATH=~/.local/bin:$PATH
+ 
+  --->source ~/.bash_profile
+ 
+  --->pip --version
+
+     pip 8.1.2 from ~/.local/lib/python3.4/site-packages (python 3.4).
+
+--->Installing the AWS CLI with Pip
+
+  --->pip install awscli --upgrade --user
+
+   -->aws --version
+  
+   -->aws configure
+
+
+
+yum install httpd
+    2  systemctl start httpd
+    3  ps -ef | grep httpd
+    4  aws --version
+    5  aws-cli/1.11.84 Python/3.6.2 Linux/4.4.0-59-generic botocore/1.5.47
+    6  curl -O https://bootstrap.pypa.io/get-pip.py
+    7  python get-pip.py --user
+    8  echo $SHELL
+    9  python --version
+   10  yum install aws
+   11  pip --version
+   12  python --version
+   13  pip install awscli --upgrade --user
+   14  curl -O https://bootstrap.pypa.io/get-pip.py
+   15  python get-pip.py --user
+   16  export PATH=~/.local/bin:$PATH
+   17  source ~/.bash_profile
+   18  pip --version
+   19  pip install awscli --upgrade --user
+   20  aws --verion
+   21  aws --version
+   22  aws configure
+   23  aws s3 ls
+ 
+
+
+
+ 
+

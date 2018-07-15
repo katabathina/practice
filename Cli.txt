@@ -1,0 +1,32 @@
+Access Key ID:
+AKIAJCRDXDVZBTFPMRLA
+Secret Access Key:
+0ewUy02PVEQCMT8kPoMP1mUZjvicBpEsFFSCls6Q
+cli commands
+
+s3
+aws s3 mb s3://name
+aws s3 ls s3://name --recursive
+
+aws s3 ls s3://name/dir
+
+aws s3 cp s3://weekendlabs/Cli.txt .
+aws s3 ls s3://weekendlabs/Cli.txt 
+
+
+
+ec2
+aws ec2 monitor-instances --instance-ids i-09c3815ed51ee4085
+aws ec2 describe-instaces
+>aws ec2 describe-instances --instance-ids i-09c3815ed51ee4085
+
+
+SNS
+
+aws sns create-topic --name monitoring
+to increase the load
+dd if=/dev/zero of=/dev/nulls
+
+Cloudtrail
+https://www.cloudconformity.com/conformity-rules/CloudTrail/cloudtrail-s3-bucket-logging-enabled.html
+

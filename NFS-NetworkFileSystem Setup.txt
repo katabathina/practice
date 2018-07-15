@@ -1,0 +1,26 @@
+TASK:-
+=================================================
+Setup and Configure NFS Mounts on Linux Server
+============================================
+
+
+https://www.tecmint.com/how-to-setup-nfs-server-in-linux/  ---referenfe link
+===========================================================
+
+1. Setup and Configure NFS Mounts on Linux Server
+
+To setup NFS mounts, we’ll be needing at least two Linux/Unix machines. Here in this tutorial, I’ll be using two servers.
+ 
+NFS Server: nfsserver.example.com with IP-192.168.0.100
+NFS Client : nfsclient.example.com with IP-192.168.0.101
+
+2. Installing NFS Server and NFS Client
+
+We need to install NFS packages on our NFS Server as well as on NFS Client machine. We can install it via “yum” (Red Hat Linux) and “apt-get” (Debian and Ubuntu) package installers.
+
+ yum install nfs-utils nfs-utils-lib
+ yum install portmap (not required with NFSv4)
+
+3. systemctl start nfs----->start the nfs service
+
+4. 
